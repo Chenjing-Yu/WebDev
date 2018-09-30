@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+<div>
+    <h1>Register</h1>
+    <form>
+        <label for="firstname">First Name: </label>
+        <input type="text" id="firstname" name="firstname" placeholder="first name" required>
+        <label for="lastname">Last Name: </label>
+        <input type="text" id="lastname" name="lastname" placeholder="last name" required><br>
+
+        <label for="male">Male</label>
+        <input type="radio" name="gender" id="male" value="male">
+        <label for="female">Female</label>
+        <input type="radio" name="gender" id="female" value="female">
+        <label for="other">Other</label>
+        <input type="radio" name="gender" id="other" value="other">
+
+        <br>
+
+        <input type="radio" name="gender" value="Male">Male</input>
+        <input type="radio" name="gender" value="Female">Female</input>
+        <input type="radio" name="gender" value="Other">Other</input><br>
+
+        <label for="email">Email: </label>
+        <input type="email" id="email" name="email" required>
+        <label for="pwd">Password: </label>
+<!--         <input type="password" id="pwd" name="pwd" minlength="5" maxlength="8" placeholder="5 - 8 characters" required title="Please put in 5 - 8 characters."><br> -->
+        <input type="password" id="pwd" name="pwd" pattern=".{5,8}" placeholder="5 - 8 characters" required title="Please put in 5 - 8 characters."><br>
+
+        <label for="birthday">
+          Birthday:
+          <select id="day" name="day" required>
+              <option>Day</option>
+              <option>01</option>
+              <option>02</option>
+              <option>03</option>
+              <option>04</option>
+              <option>05</option>
+              <option>06</option>
+              <option>07</option>
+              <option>08</option>
+              <option>09</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+              <option>13</option>
+              <option>14</option>
+              <option>15</option>
+              <option>16</option>
+              <option>17</option>
+              <option>18</option>
+              <option>19</option>
+              <option>20</option>
+              <option>21</option>
+              <option>22</option>
+              <option>23</option>
+              <option>24</option>
+              <option>25</option>
+              <option>26</option>
+              <option>27</option>
+              <option>28</option>
+              <option>29</option>
+              <option>30</option>
+              <option>31</option>
+            </select><br>
+        </label>
+
+        <label for="terms">I agree to the terms </label>
+        <input type="checkbox" id="terms" required><br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
