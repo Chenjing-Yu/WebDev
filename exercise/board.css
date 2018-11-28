@@ -1,0 +1,38 @@
+h1 {
+    font-family: 'Merriweather', serif;
+    text-align: center;
+}
+
+table {
+    margin: auto;
+    text-align: center;
+}
+
+td {
+    width: 100px;
+    height: 100px;
+}
+
+td:hover {
+    border: 1px solid grey;
+}
+
+tr:nth-of-type(2) td {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+td:nth-of-type(2) {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+/*.vertical {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.horizontal {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}*/
