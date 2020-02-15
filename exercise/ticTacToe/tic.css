@@ -1,0 +1,28 @@
+.current {
+  background-color: blue;
+  color: white;
+}
+
+.players {
+  font-family: 'Merriweather', serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+.player {
+  margin: 10px;
+}
+
+table {
+  background-color: grey;
+  color: white;
+  font-size: 100px;
+  margin: auto;
+  text-align: center;
+}
+
+table td {
+  border: 2px solid white;
+  height: 200px;
+  width: 200px;
+}
