@@ -21,23 +21,16 @@ class Board extends React.Component {
   }
 
   render() {
+    const indexes = [0, 1, 2];
     return (
       <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+        {indexes.map((i) => {
+          return (
+            <div className="board-row">
+              {indexes.map((j) => this.renderSquare(3*i+j))}
+            </div>
+        );
+        })}
       </div>
     );
   }
@@ -89,18 +82,17 @@ class Game extends React.Component {
     const status = winner ?
       'Winner: ' + winner :
       'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-
     const moves = history.map((step, move) => {
       const desc = move ?
         (`Go to move #${move} at
           (${Math.floor(step.location/3) + 1}, ${step.location%3 + 1})`) :
         'Go to game start';
+      const style = this.state.stepNumber === move ?
+        {fontWeight: 'bold'} : {fontWeight: 'normal'};
       return (
         <li key={move}>
-          <button
-            style={this.state.stepNumber === move ?
-              {fontWeight: 'bold'} : {fontWeight: 'normal'}}
-            onClick={() => this.jumpTo(move)}>{desc}
+          <button style={style} onClick={() => this.jumpTo(move)}>
+            {desc}
           </button>
         </li>
       );
