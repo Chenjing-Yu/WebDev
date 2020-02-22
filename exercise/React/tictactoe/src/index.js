@@ -109,6 +109,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
+          <div>{/*TODO sort toggle button*/}</div>
           <ol>{moves}</ol>
         </div>
       </div>
