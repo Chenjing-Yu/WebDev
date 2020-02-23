@@ -2,8 +2,9 @@ import React from 'react'
 
 function InlineReact() {
   const heading = {
-    fontSize : '32px',
-    color: 'blue'
+    fontSize : '12px',
+    color: 'blue',
+    margin: 0,
   }
   return (
     <div style={heading}>Inline Style</div>

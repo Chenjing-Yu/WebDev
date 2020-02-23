@@ -8,6 +8,7 @@ import Parent from './components/Parent.js'
 import List from './components/List.js'
 import Stylesheet from './components/Stylesheet.js'
 import Inline from './components/InlineStyle.js'
+import Form from './components/Form.js'
 
 class App extends Component {
   render() {
@@ -22,6 +23,7 @@ class App extends Component {
         <List />
         <Stylesheet primary='true'/>
         <Inline />
+        <Form />
       </div>
     );
   }
