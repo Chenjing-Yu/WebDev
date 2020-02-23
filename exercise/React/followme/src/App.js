@@ -10,6 +10,7 @@ import Stylesheet from './components/Stylesheet.js'
 import Inline from './components/InlineStyle.js'
 import Form from './components/Form.js'
 import LifecycleA from './components/LifecycleA.js'
+import RefComponent from './components/RefComponent.js'
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
         <Inline />
         <Form />
         <LifecycleA />
+        <RefComponent />
       </div>
     );
   }
