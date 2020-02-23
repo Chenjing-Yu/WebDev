@@ -9,6 +9,7 @@ import List from './components/List.js'
 import Stylesheet from './components/Stylesheet.js'
 import Inline from './components/InlineStyle.js'
 import Form from './components/Form.js'
+import LifecycleA from './components/LifecycleA.js'
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
         <Stylesheet primary='true'/>
         <Inline />
         <Form />
+        <LifecycleA />
       </div>
     );
   }
