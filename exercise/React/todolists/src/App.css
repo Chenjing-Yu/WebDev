@@ -1,6 +1,7 @@
 h1 {
   margin: 20px 0 15px 0;
 }
+
 #app {
   width: 600px;
   margin: 0 auto;
@@ -9,28 +10,43 @@ h1 {
 
 #tasks {
   text-align: left;
-}
-
-ul {
-  list-style: none;
   background-color: white;
-  border-radius: 0.5rem;
-  padding: 1rem;
+  border-radius: 10px;
+  padding: 5px;
 }
 
-ul>li {
-  margin: 0.2rem 0;
+.task-item {
+  width: auto;
+  height: 30px;
+  padding: 5px;
+  border-bottom: 1px dotted grey;
+  margin: auto;
+  border-radius: 5px;
+  font-size: 20px;
 }
 
-ul>li:hover {
+.task-item:hover {
   background-color: #F5F5F5;
 }
 
-ul>li>div {
-  display: block;
+.task-name {
+  width: 80%;
+  float: left;
+  overflow: hidden;
+}
+
+.edit {
+  width: 10%;
+  float: left;
 }
 
 .remove {
+  width: 10%;
+  float: left;
+}
+
+.remove-btn {
+  color: rebeccapurple;
 }
 
 .done {
@@ -43,10 +59,33 @@ ul>li>div {
 }
 
 .form-inline .form-control {
-  width: 50%;
-  margin-left: 80px;
+  width: 80%;
+  margin-top: 20px;
+  margin-right: 12px;
+  padding: 2px;
+  border-radius: 2px;
+  font-family: inherit;
 }
 
 .icon {
   padding: 6px 10px 6px 0;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal_main {
+  position:fixed;
+  background: white;
+  width: 80%;
+  height: auto;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
 }
