@@ -12,6 +12,7 @@ import Form from './components/Form.js'
 import LifecycleA from './components/LifecycleA.js'
 import RefComponent from './components/RefComponent.js'
 import PortalParent from './components/Portal.js'
+import Dashboard from './components/Dashboard.js'
 
 class App extends Component {
   render() {
@@ -30,6 +31,7 @@ class App extends Component {
         <LifecycleA />
         <RefComponent />
         <PortalParent />
+        <Dashboard />
       </div>
     );
   }
