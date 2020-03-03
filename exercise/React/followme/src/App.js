@@ -13,6 +13,12 @@ import LifecycleA from './components/LifecycleA.js'
 import RefComponent from './components/RefComponent.js'
 import PortalParent from './components/Portal.js'
 import Dashboard from './components/Dashboard.js'
+import ClickCounter from './components/ClickCounter.js'
+import HoverCounter from './components/HoverCounter.js'
+import Counter from './components/Counter.js'
+import ClickCounter2 from './components/ClickCounter2.js'
+import HoverCounter2 from './components/HoverCounter2.js'
+import ComponentA from './components/ComponentA.js'
 
 class App extends Component {
   render() {
@@ -30,8 +36,35 @@ class App extends Component {
         <Form />
         <LifecycleA />
         <RefComponent />
+
         <PortalParent />
+
         <Dashboard />
+
+        <h4>HOC</h4>
+        <ClickCounter />
+        <HoverCounter />
+
+        <h4>render props</h4>
+        <Counter
+          render={(count, incrementCount) => (
+            <ClickCounter2
+              count={count}
+              incrementCount={incrementCount}
+           />
+          )}
+        />
+        <Counter
+          render={(count, incrementCount) => (
+            <HoverCounter2
+              count={count}
+              incrementCount={incrementCount}
+           />
+          )}
+        />
+
+      <h4>Context</h4>
+      <ComponentA />
       </div>
     );
   }
