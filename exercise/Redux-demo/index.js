@@ -1,6 +1,10 @@
 const redux = require('redux') //import redux in nodejs syntax
+const reduxLogger = require('redux-logger')
+
 const createStore = redux.createStore
 const combineReducers = redux.combineReducers
+const applyMiddleware = redux.applyMiddleware
+const logger = reduxLogger.createLogger()
 
 const BUY_CAKE = 'BUY_CAKE'
 const BUY_ICE_CREAM = 'BUY_ICE_CREAM'
@@ -58,15 +62,13 @@ const rootReducer = combineReducers({
 })
 
 //create the store
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(logger))
 
 //access current state via store.getState
 console.log('Initial state', store.getState())
 
 //register listener - store.subscribe which returns the unsubscribe function
-const unsubscribe = store.subscribe(
-  () => console.log('Updated state', store.getState())
-)
+const unsubscribe = store.subscribe(()=> {})
 
 //dispatch actions via store.dispatch with an action creator
 store.dispatch(buyCake())
