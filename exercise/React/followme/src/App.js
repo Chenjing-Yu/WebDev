@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Hello from './components/Greet.js'
 import Welcome from './components/Welcome.js'
@@ -19,6 +18,8 @@ import Counter from './components/Counter.js'
 import ClickCounter2 from './components/ClickCounter2.js'
 import HoverCounter2 from './components/HoverCounter2.js'
 import ComponentA from './components/ComponentA.js'
+import Icons from './components/Icons.js'
+import IdleTimerContainer from './components/IdleTimerContainer.js'
 
 class App extends Component {
   render() {
@@ -65,6 +66,8 @@ class App extends Component {
 
       <h4>Context</h4>
       <ComponentA />
+      <Icons />
+      <IdleTimerContainer />
       </div>
     );
   }

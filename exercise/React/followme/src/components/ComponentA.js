@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ComponentB from './ComponentB'
-import {UserProvider} from './userContext.js'
+//import {UserProvider} from './userContext.js'
 
 class ComponentA extends Component {
   render() {
