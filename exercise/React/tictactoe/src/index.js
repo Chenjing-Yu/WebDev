@@ -4,8 +4,9 @@ import './index.css';
 import Button from '@material-ui/core/Button';
 
 function Square(props) {
+    const className = props.highlight ? 'square win-square' : 'square';
     return (
-      <button className="square" onClick={() => props.onClick()}>
+      <button className={className} onClick={() => props.onClick()}>
         {props.value}
       </button>
     );
@@ -13,11 +14,13 @@ function Square(props) {
 
 class Board extends React.Component {
   renderSquare(i) {
+    const highlight = this.props.winLine && this.props.winLine.includes(i);
     return (
       <Square
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
         key={i}
+        highlight={highlight}
       />
     );
   }
@@ -57,7 +60,7 @@ class Game extends React.Component {
     const current = history[this.state.stepNumber];
     const squares = current.squares.slice();
 
-    if (calculateWinner(squares) || squares[i]) {
+    if (squares[i] || calculateWinLine(squares)) {
       return;
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O';
@@ -87,14 +90,14 @@ class Game extends React.Component {
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
-    const status = winner ?
-      'Winner: ' + winner :
+    const winLine = calculateWinLine(current.squares);
+    const status = winLine ?
+      'Winner: ' + current.squares[winLine[0]] :
       'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     const sortBtnValue = this.state.ascendMoves
       ? 'Descend'
       : 'Ascend';
-    let sortedHistory = history.slice(0).map((item, index) => ({[index]: item}));
+    let sortedHistory = history.slice().map((item, index) => ({[index]: item}));
     if (!this.state.ascendMoves) sortedHistory = sortedHistory.reverse();
     const moves = sortedHistory.map((item) => {
       const move = Object.keys(item)[0];
@@ -118,6 +121,7 @@ class Game extends React.Component {
       <div className="game">
         <div className="game-board">
           <Board
+            winLine={winLine}
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
           />
@@ -146,7 +150,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-function calculateWinner(squares) {
+function calculateWinLine(squares) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -160,7 +164,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return [a, b, c];
     }
   }
   return null;
