@@ -91,8 +91,10 @@ class Game extends React.Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winLine = calculateWinLine(current.squares);
+    const isFull = calculateFull(current.squares);
     const status = winLine ?
       'Winner: ' + current.squares[winLine[0]] :
+      isFull ? 'Draw!' :
       'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     const sortBtnValue = this.state.ascendMoves
       ? 'Descend'
@@ -149,6 +151,13 @@ ReactDOM.render(
   <Game />,
   document.getElementById('root')
 );
+
+function calculateFull(squares) {
+  for(const e of squares) {
+    if(e == null) return false;
+  }
+  return true;
+}
 
 function calculateWinLine(squares) {
   const lines = [
