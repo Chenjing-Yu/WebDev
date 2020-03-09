@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Button from '@material-ui/core/Button';
 
 function Square(props) {
     return (
@@ -47,6 +48,7 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
+      ascendMoves: true,
     };
   }
 
@@ -69,6 +71,12 @@ class Game extends React.Component {
     });
   }
 
+  changeSortType() {
+    this.setState((preState) => ({
+      ascendMoves: !preState.ascendMoves
+    }));
+  }
+
   jumpTo(step) {
     this.setState({
       stepNumber: step,
@@ -83,10 +91,17 @@ class Game extends React.Component {
     const status = winner ?
       'Winner: ' + winner :
       'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-    const moves = history.map((step, move) => {
-      const desc = move ?
+    const sortBtnValue = this.state.ascendMoves
+      ? 'Descend'
+      : 'Ascend';
+    let sortedHistory = history.slice(0).map((item, index) => ({[index]: item}));
+    if (!this.state.ascendMoves) sortedHistory = sortedHistory.reverse();
+    const moves = sortedHistory.map((item) => {
+      const move = Object.keys(item)[0];
+      const info = Object.values(item)[0];
+      const desc = move !== '0' ?
         (`Go to move #${move} at
-          (${Math.floor(step.location/3) + 1}, ${step.location%3 + 1})`) :
+          (${Math.floor(info.location/3) + 1}, ${info.location%3 + 1})`) :
         'Go to game start';
       const style = this.state.stepNumber === move ?
         {fontWeight: 'bold'} : {fontWeight: 'normal'};
@@ -108,8 +123,15 @@ class Game extends React.Component {
           />
         </div>
         <div className="game-info">
+          <div>
+            <Button
+              variant='outlined'
+              color='primary'
+              size='small'
+              onClick={() => this.changeSortType()}
+              >{sortBtnValue}</Button>
+          </div>
           <div>{status}</div>
-          <div>{/*TODO sort toggle button*/}</div>
           <ol>{moves}</ol>
         </div>
       </div>
